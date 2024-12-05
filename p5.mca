@@ -1,0 +1,28 @@
+0010 0   ; n = 5
+0011 5   ; s = 0 (suma)
+0012 1   ; v = 1 (adres początkowy wektora)
+0013 2   ; Elementy wektora:
+0014 3   ;
+0015 4   ;
+0016 5   ;
+0200  CPA 10   ; Wczytaj n (5) do akumulatora
+0201  STO 11   ; Zapisz do komórki s (0)
+0202  CPA 12   ; Wczytaj początkowy adres wektora (v)
+0203  STO 20   ; Zapisz do zmiennej pomocniczej i
+0204  CPA 12   ; Wczytaj początkowy adres wektora (v)
+0205  ADD 10   ; Dodaj n (5) do akumulatora
+0206  STO 21   ; Zapisz adres końcowy wektora (v + n) do end
+
+LOOP:
+0207  CPA 20   ; Wczytaj wartość i (adres bieżącego elementu)
+0208  SUB 21   ; Odejmij end, aby sprawdzić, czy osiągnięto koniec
+0209  BRZ 100  ; Jeśli i == end, zakończ pętlę
+0210  CPA [20] ; Wczytaj wartość z komórki o adresie i
+0211  ADD 11   ; Dodaj do sumy (s)
+0212  STO 11   ; Zapisz nową sumę do komórki s
+0213  INC 20   ; Zwiększ i o 1 (przejdź do następnego elementu wektora)
+0214  BRA 200  ; Skocz z powrotem do początku pętli
+
+END:
+0100  CPA 00   ; Wczytaj wartość 0 do akumulatora (zakończenie programu)
+0101  HLT      ; Zatrzymaj program

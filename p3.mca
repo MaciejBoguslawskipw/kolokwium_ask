@@ -1,0 +1,15 @@
+0010 0   ; Komórka x (adres początkowy 0)
+0011 5   ; Komórka y (adres końcowy 5)
+0020 0   ; Komórka pomocnicza i (na początku 0)
+0200  CPA 10   ; 1aaaa - Wczytaj wartość z komórki 10 (x) do akumulatora
+0201  STO 20   ; 2aaaa - Zapisz wartość z akumulatora (x) do komórki 20 (i)
+0202  CPA 20   ; 1aaaa - Wczytaj wartość z komórki 20 (i) do akumulatora
+0203  SUB 11   ; 92401 - Odejmij wartość z komórki 11 (y) od akumulatora
+0204  BRZ 100  ; 8aaaa - Skocz do adresu 100 (END), jeśli akumulator jest równy 0 (czyli i = y)
+0205  CPA 00   ; 1aaaa - Wczytaj wartość 0 z komórki 0 do akumulatora
+0206  STO [i]  ; 2aaaa - Zapisz 0 w komórce o adresie i
+0207  INC 20   ; 82201 - Zwiększ wartość komórki i (20) o 1
+0208  BRA 200  ; 10000 - Skocz do adresu 200 (początek pętli)
+0100  CPA 00   ; 1aaaa - Wczytaj wartość 0 z komórki 0 do akumulatora
+0101  STO [i]  ; 2aaaa - Zapisz 0 w komórce o adresie y (5)
+0102  HLT      ; 00000 - Zatrzymaj program

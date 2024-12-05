@@ -1,0 +1,10 @@
+0010  3   ; Komórka x (zawiera wartość 3)
+0011  1   ; Komórka y (zawiera wartość 1)
+00200  CPA 11   ; 1aaaa - Wczytaj wartość z komórki 11 (y) do akumulatora
+00201  SUB 1    ; 92401 - Odejmij 1 od wartości w akumulatorze (jeśli y = 1, to w akumulatorze będzie 0)
+00202  BRZ 100  ; 8aaaa - Skocz do adresu 100 (MULTIPLY), jeśli akumulator jest równy 0 (czyli y = 1)
+00203  HLT      ; 00000 - Zatrzymaj program, jeśli y != 1
+0100  CPA 10   ; 1aaaa - Wczytaj wartość z komórki 10 (x) do akumulatora
+0101  ADD 10   ; 3aaaa - Dodaj wartość z komórki 10 (x) do akumulatora (x * 2)
+0102  STO 10   ; 2aaaa - Zapisz wynik (2 * x) do komórki 10 (x)
+0103  HLT      ; 00000 - Zatrzymaj program
